@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.tipcalculator.databinding.ActivityMainBinding
 import java.text.NumberFormat
+import kotlin.math.ceil
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun calculateTip(){
         //Getting the user input cost of service
-        val stringInTextField = binding.costOfService.text.toString()
+        val stringInTextField = binding.costOfServiceEditText .text.toString()
 
         //Converting that input in a double for calculations
         val cost = stringInTextField.toDoubleOrNull()
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         //Getting the option to round up
         //Rounding tip up is true
         if (binding.roundUpSwitch.isChecked) {
-            tip = kotlin.math.ceil(tip)
+            tip = ceil(tip)
         }
 
         displayTip(tip)
